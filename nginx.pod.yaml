@@ -9,5 +9,13 @@ spec: #The spec/blueprint for the pod
   containers: #Information about the containers that will run in the Pod
   - name: my-nginx
     image: nginx:alpine
+    livenessProbe: 
+      httpGet:
+        path: /index.html
+        port: 80
+      initialDelaySeconds: 15
+      timeoutSeconds: 2
+      periodSeconds: 5
+      failureThreshold: 1
     ports:
     - containerPort: 80
