@@ -1,0 +1,12 @@
+apiVersion: v1 #Depending on what you are trying to create or modify, you have to set the right API version. 
+               #You need to check in the doc what is possible in the different API version. For our case we use v1 since we are trying to create Pods. 
+kind: Pod #The type of object we are trying to create
+metadata: #The metadata is information about the object. It can only contain key/values Kubernetes expect, like name, labels,etc. 
+  name: myapp-pod
+  labels: #Under labels you can have any type of key/value you would like.
+    app: myapp
+    type: front-end #With this for example, you will be able to filter front end pods at a later point of time. 
+spec: 
+  containers: #List/Array as a Pod can have multiple containers in it. 
+    - name: nginx-container
+      image: nginx
