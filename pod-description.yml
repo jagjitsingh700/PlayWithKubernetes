@@ -1,0 +1,10 @@
+apiVersion: v1 #Depending on what you intend to create, you need to set the correct ApiVersion. 
+kind: Pod #The type of object we are trying to create
+metadata: #The information about the object we are intending to create. 
+  name: myfavapp-pod
+  labels: #Here you can have a dictionary with any key/value you require for grouping. 
+    app: myfavapp
+spec: 
+  containers: #List of containers to run on this particular pod
+    - name: nginx-container
+      image: nginx
