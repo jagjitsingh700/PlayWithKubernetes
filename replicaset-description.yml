@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myfavapp-replicaset
+  labels:
+    app: myfavapp
+    type: front-end
+spec:
+  template:
+    metadata: #The information about the object we are intending to create. 
+      name: redis
+      labels: #Here you can have a dictionary with any key/value you require for grouping. 
+        app: myfavredisapp
+        type: caching
+    spec: 
+      containers: #List of containers to run on this particular pod
+      - name: redis
+        image: redis
+  replicas: 3
+  selector: 
+    matchLabels:
+      type: caching

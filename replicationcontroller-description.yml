@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: myfavapp-replicationcontroller
+  labels:
+    app: myfavapp
+    type: front-end
+spec:
+  template:
+    metadata: #The information about the object we are intending to create. 
+      name: redis
+      labels: #Here you can have a dictionary with any key/value you require for grouping. 
+        app: myfavredisapp
+    spec: 
+      containers: #List of containers to run on this particular pod
+      - name: redis
+        image: redis
+  replicas: 3
+  
